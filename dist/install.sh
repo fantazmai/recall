@@ -97,7 +97,10 @@ main() {
   sha_url="$url_base/$tarball_name.sha256"
 
   tmp="$(mktemp -d)"
-  trap 'rm -rf "$tmp"' EXIT
+  # Bake the path into the trap (double quotes expand $tmp now): the EXIT trap
+  # fires after main() returns, where the `local` tmp is out of scope and
+  # `set -u` would otherwise abort with "tmp: unbound variable".
+  trap "rm -rf '$tmp'" EXIT
 
   cyan "recall — installer"
   printf '  repo:     %s\n' "$REPO"
