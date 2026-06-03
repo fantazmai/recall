@@ -39,7 +39,17 @@ macOS (arm64), Linux (x64 + arm64), and Windows (x64). **No Go required** — th
 
 ### Prebuilt binary (no Go required)
 
-**macOS / Linux:**
+**Homebrew (macOS / Linux):**
+
+```bash
+brew install fantazmai/fantazm/recall
+recall download-model      # one-time, ~57 MiB, SHA256-verified
+recall doctor              # sanity check
+```
+
+`brew upgrade` keeps it current after that.
+
+**curl (macOS / Linux):**
 
 ```bash
 curl -fsSL https://fantazm.ai/recall/install.sh | sh
